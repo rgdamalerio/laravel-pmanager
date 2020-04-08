@@ -15,4 +15,9 @@ class Company extends Model
     public function user(){
         return $this->belongsTo('App\User');
     }
+
+    public function getUrlAttribute()
+    {
+        return route("companies.show",$this->id);
+    }
 }

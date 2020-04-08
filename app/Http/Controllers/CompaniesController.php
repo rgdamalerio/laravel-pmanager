@@ -14,9 +14,13 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        $companies = Company::all();
+        //\DB::enableQueryLog();
+
+        $companies = Company::with('user')->latest()->paginate(10);
 
         return view('companies.index',['companies'=>$companies]);
+        
+        //dd(\DB::getQueryLog());
     }
 
     /**
